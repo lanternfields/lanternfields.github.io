@@ -1,0 +1,91 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Privacy Policy · Precedent</title><link rel="icon" href="precedent-icon.svg"><style>
+:root{--bg:#fff;--fg:#172b4d;--muted:#44546f;--line:#091e4224;--accent:#5b4bc4;--code:#f7f8f9}
+@media (prefers-color-scheme:dark){:root{--bg:#1d2125;--fg:#b6c2cf;--muted:#9fadbc;--line:#a6c5e229;--accent:#9f8fef;--code:#22272b}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Ubuntu,sans-serif}
+header{border-bottom:1px solid var(--line)}header div,main{max-width:780px;margin:0 auto;padding:16px}
+header a{color:var(--fg);text-decoration:none;font-weight:700;display:flex;align-items:center;gap:10px}
+nav{display:flex;gap:16px;flex-wrap:wrap;font-size:14px}nav a{color:var(--muted)}a{color:var(--accent)}
+h1{font-size:30px;line-height:1.2}h2{margin-top:32px;font-size:20px}table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}
+td,th{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}code{background:var(--code);padding:1px 4px;border-radius:4px}
+pre{background:var(--code);padding:12px;border-radius:8px;overflow-x:auto}footer{max-width:780px;margin:40px auto;padding:16px;color:var(--muted);font-size:13px}</style></head><body>
+<header><div><a href="index.html"><img src="precedent-icon.svg" width="28" height="28" alt="">Precedent</a>
+<nav><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="support.html">Support</a><a href="mcp.html">MCP</a></nav></div></header>
+<main><h1>Precedent — Privacy Policy</h1>
+<p><em>Last updated: 2026-10-27</em></p>
+<p>Precedent (&quot;the app&quot;) is an Atlassian Forge app published by <strong>Lanternfield Studio</strong> (&quot;we&quot;). This policy
+explains what data the app processes and how.</p>
+<h2>Summary</h2>
+<ul>
+<li>Precedent runs entirely on Atlassian&#39;s Forge platform (&quot;Runs on Atlassian&quot;). <strong>We operate no servers,
+and the app makes no calls outside Atlassian.</strong></li>
+<li>Data stays in your Atlassian site&#39;s Forge app storage, in your site&#39;s data residency location.</li>
+<li>We, the publisher, <strong>cannot access your data</strong>.</li>
+</ul>
+<h2>What the app processes</h2>
+<table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Source</th>
+<th>Purpose</th>
+<th>Stored?</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Page and comment content (Confluence), issue summaries, descriptions and comments (Jira)</td>
+<td>Read through Atlassian APIs when content changes, or when a user scans</td>
+<td>Detect decisions</td>
+<td>Only the extracted decision record and a short evidence quote (≤400 characters)</td>
+</tr>
+<tr>
+<td>Decision records (title, statement, rationale, alternatives, dates, status, tags, links)</td>
+<td>Extraction, users, Rovo actions</td>
+<td>Decision ledger</td>
+<td>Yes, in Forge app storage</td>
+</tr>
+<tr>
+<td>Atlassian account IDs (owners, participants, editors) and display names when available</td>
+<td>Mentions in content, Teamwork Graph, the acting user</td>
+<td>Attribution and audit history</td>
+<td>Yes (account IDs, display names)</td>
+</tr>
+<tr>
+<td>Teamwork Graph context (contributors, teams, goals)</td>
+<td>Teamwork Graph API, queried as the viewing user</td>
+<td>Show who and what a decision relates to</td>
+<td>Cached on the decision record</td>
+</tr>
+<tr>
+<td>Settings and usage counters (daily AI token count)</td>
+<td>Admins and the app</td>
+<td>Configuration and budget</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<p>The app does not collect email addresses, passwords, payment information, or analytics or tracking data.</p>
+<h2>AI processing</h2>
+<p>When an admin has enabled &quot;Use Atlassian-hosted AI&quot;, text from pages and issues is sent to <strong>Forge LLMs</strong>.
+These are Anthropic Claude models hosted by Atlassian inside the Atlassian platform. That text is used
+only to extract decisions. Requests pass through Atlassian&#39;s AI moderation and Acceptable Use Policy.
+No data is sent to any third party, and the app does not train any model. Admins can disable AI at any
+time, and the rule-based extractor keeps working.</p>
+<h2>Access control</h2>
+<p>Users see a decision only if they can open at least one of its source pages or issues. The app checks
+this as the viewing user and hides decisions when it cannot confirm access. Decisions recorded
+manually or through Rovo are visible to users who can use the app on the site.</p>
+<h2>Retention and deletion</h2>
+<ul>
+<li>Data is kept until it is deleted. Admins can delete every Precedent record from <strong>Precedent settings →
+Delete all data</strong>.</li>
+<li>Uninstalling the app removes its Forge storage according to Atlassian&#39;s Forge data-deletion policies.</li>
+<li>Personal data: the app stores Atlassian account IDs. Every week it reports them through Forge&#39;s
+personal data reporting API. When an account is closed, the app removes that account ID and its
+cached display name from every decision record (owner, participants, contributors, audit history)
+and shows &quot;Former user&quot; instead. Cached names of updated accounts are refreshed.</li>
+</ul>
+<h2>Sub-processors</h2>
+<p>Atlassian (Forge hosting, storage and Forge LLMs). No others.</p>
+<h2>Contact</h2>
+<p><strong>Lanternfield Studio</strong> · <strong><a href="mailto:lanternfieldstudio@gmail.com">lanternfieldstudio@gmail.com</a></strong> · <strong>[support URL]</strong></p>
+</main><footer>© 2026 Lanternfield Studio · Precedent runs on Atlassian Forge.</footer></body></html>

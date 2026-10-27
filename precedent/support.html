@@ -1,0 +1,73 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Support · Precedent</title><link rel="icon" href="precedent-icon.svg"><style>
+:root{--bg:#fff;--fg:#172b4d;--muted:#44546f;--line:#091e4224;--accent:#5b4bc4;--code:#f7f8f9}
+@media (prefers-color-scheme:dark){:root{--bg:#1d2125;--fg:#b6c2cf;--muted:#9fadbc;--line:#a6c5e229;--accent:#9f8fef;--code:#22272b}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Ubuntu,sans-serif}
+header{border-bottom:1px solid var(--line)}header div,main{max-width:780px;margin:0 auto;padding:16px}
+header a{color:var(--fg);text-decoration:none;font-weight:700;display:flex;align-items:center;gap:10px}
+nav{display:flex;gap:16px;flex-wrap:wrap;font-size:14px}nav a{color:var(--muted)}a{color:var(--accent)}
+h1{font-size:30px;line-height:1.2}h2{margin-top:32px;font-size:20px}table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}
+td,th{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}code{background:var(--code);padding:1px 4px;border-radius:4px}
+pre{background:var(--code);padding:12px;border-radius:8px;overflow-x:auto}footer{max-width:780px;margin:40px auto;padding:16px;color:var(--muted);font-size:13px}</style></head><body>
+<header><div><a href="index.html"><img src="precedent-icon.svg" width="28" height="28" alt="">Precedent</a>
+<nav><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="support.html">Support</a><a href="mcp.html">MCP</a></nav></div></header>
+<main><h1>Precedent — Support</h1>
+<p><em>Draft support page. Replace the bracketed fields before publishing.</em></p>
+<p><strong>Contact:</strong> <a href="mailto:lanternfieldstudio@gmail.com">lanternfieldstudio@gmail.com</a> · Response target: 2 business days · Issues and feature requests: [public issue tracker URL]</p>
+<h2>Getting started (5 minutes)</h2>
+<ol>
+<li><strong>Install</strong> Precedent in Jira. During installation, also connect Confluence. A site admin is
+required, and an org admin if you grant the Teamwork Graph permissions.</li>
+<li>Open <strong>Apps → Precedent</strong> in Jira, or <strong>Apps → Decision ledger</strong> in Confluence.</li>
+<li>Go to <strong>Precedent settings</strong> (Jira → Apps → Manage apps) and choose which spaces and projects to
+watch. Then run <strong>Backfill existing content</strong> to capture decisions from existing pages and issues.</li>
+<li>Review the <strong>Inbox</strong>: confirm real decisions and dismiss the rest. Confirmed decisions power the
+conflict checks.</li>
+<li>Open any Jira issue. The <strong>Precedent</strong> panel in the issue sidebar shows the decisions that apply
+and any conflicts.</li>
+<li>In Rovo, pick <strong>Decision Keeper</strong> and ask: <em>&quot;What did we decide about our event bus?&quot;</em></li>
+</ol>
+<h2>How decisions are captured</h2>
+<table>
+<thead>
+<tr>
+<th>Where</th>
+<th>How to write it</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Confluence decision element (<code>/decision</code>)</td>
+<td>Captured with high confidence and auto-confirmed by default</td>
+</tr>
+<tr>
+<td>DACI template</td>
+<td>The Outcome, Driver, Approver, Status and Due date fields are read</td>
+</tr>
+<tr>
+<td>Meeting notes</td>
+<td>List items under a heading such as <strong>Decisions</strong> or <strong>Outcomes</strong></td>
+</tr>
+<tr>
+<td>Any page, issue or comment</td>
+<td>Phrases such as &quot;we decided…&quot;, &quot;we agreed…&quot;, &quot;we&#39;re going with X over Y because…&quot;, &quot;Decision: …&quot;</td>
+</tr>
+</tbody></table>
+<p>Questions, proposals (&quot;should we…&quot;, &quot;I propose…&quot;) and action items are ignored.</p>
+<h2>FAQ</h2>
+<p><strong>A decision I can see in Confluence is missing.</strong>
+Check that its space is in scope (Settings → Confluence spaces). Then open the page&#39;s <strong>Decisions</strong>
+byline item and choose <strong>Scan page now</strong>.</p>
+<p><strong>Why can&#39;t a colleague see a decision?</strong>
+Decisions inherit the permissions of their sources. If they can&#39;t open the source page or issue, they
+won&#39;t see the decision.</p>
+<p><strong>Does Precedent send my data anywhere?</strong>
+No. It runs on Atlassian Forge with no external calls. AI extraction uses Atlassian-hosted models, and
+admins can turn it off.</p>
+<p><strong>The Teamwork Graph section says &quot;not enabled&quot;.</strong>
+Teamwork Graph enrichment needs the app&#39;s Teamwork Graph permissions, granted by an org admin under
+Connected apps. Everything else works without it.</p>
+<p><strong>How do I connect Claude, Cursor or VS Code (MCP)?</strong>
+See <a href="mcp.html">mcp.md</a>.</p>
+<p><strong>How do I remove all data?</strong>
+Go to Settings → Data &amp; privacy → <strong>Delete all data</strong>. Uninstalling also removes app storage.</p>
+</main><footer>© 2026 Lanternfield Studio · Precedent runs on Atlassian Forge.</footer></body></html>

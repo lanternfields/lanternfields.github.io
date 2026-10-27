@@ -1,0 +1,80 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MCP guide · Precedent</title><link rel="icon" href="precedent-icon.svg"><style>
+:root{--bg:#fff;--fg:#172b4d;--muted:#44546f;--line:#091e4224;--accent:#5b4bc4;--code:#f7f8f9}
+@media (prefers-color-scheme:dark){:root{--bg:#1d2125;--fg:#b6c2cf;--muted:#9fadbc;--line:#a6c5e229;--accent:#9f8fef;--code:#22272b}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Ubuntu,sans-serif}
+header{border-bottom:1px solid var(--line)}header div,main{max-width:780px;margin:0 auto;padding:16px}
+header a{color:var(--fg);text-decoration:none;font-weight:700;display:flex;align-items:center;gap:10px}
+nav{display:flex;gap:16px;flex-wrap:wrap;font-size:14px}nav a{color:var(--muted)}a{color:var(--accent)}
+h1{font-size:30px;line-height:1.2}h2{margin-top:32px;font-size:20px}table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}
+td,th{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}code{background:var(--code);padding:1px 4px;border-radius:4px}
+pre{background:var(--code);padding:12px;border-radius:8px;overflow-x:auto}footer{max-width:780px;margin:40px auto;padding:16px;color:var(--muted);font-size:13px}</style></head><body>
+<header><div><a href="index.html"><img src="precedent-icon.svg" width="28" height="28" alt="">Precedent</a>
+<nav><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="support.html">Support</a><a href="mcp.html">MCP</a></nav></div></header>
+<main><h1>Using Precedent from external AI assistants (MCP)</h1>
+<p>Precedent declares a <code>rovo:mcp</code> module named <strong>Precedent decisions</strong> that exposes six tools:</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Verb</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>search-decisions</code></td>
+<td>GET</td>
+<td>Search what was decided and why</td>
+</tr>
+<tr>
+<td><code>get-decision</code></td>
+<td>GET</td>
+<td>Fetch one decision (e.g. <code>DEC-12</code>)</td>
+</tr>
+<tr>
+<td><code>check-conflicts</code></td>
+<td>GET</td>
+<td>Check an issue key or free-text proposal against past decisions</td>
+</tr>
+<tr>
+<td><code>decisions-for-work-item</code></td>
+<td>GET</td>
+<td>List the decisions that apply to a Jira issue</td>
+</tr>
+<tr>
+<td><code>record-decision</code></td>
+<td>CREATE</td>
+<td>Record a decision (confirm with the user first)</td>
+</tr>
+<tr>
+<td><code>supersede-decision</code></td>
+<td>UPDATE</td>
+<td>Mark an older decision as superseded</td>
+</tr>
+</tbody></table>
+<p>Every call runs with the <strong>invoking user&#39;s</strong> permissions. Results are filtered to decisions whose
+sources that user can open.</p>
+<h2>In Rovo Studio</h2>
+<p>Go to <strong>Create agent → Tools → Add tools → Connected apps → Precedent</strong>, then pick the tools you want.
+The bundled <strong>Decision Keeper</strong> agent already uses all of them through the <code>precedent-decisions</code> skill.</p>
+<h2>In Claude Code, Claude Desktop, Cursor or VS Code (Early Access)</h2>
+<ol>
+<li>An org or site admin enables the tools under <strong>admin.atlassian.com → Apps → Sites → (site) →
+Connected apps → Precedent → Tools</strong>.</li>
+<li>Add the server. <code>&lt;appId&gt;</code> is the UUID at the end of <code>app.id</code> in <code>manifest.yml</code>:<pre><code class="language-bash">claude mcp add --transport http precedent https://mcp.atlassian.com/forge/&lt;appId&gt;
+</code></pre>
+Other clients: add an HTTP MCP server with the same URL.</li>
+<li>Authenticate with OAuth in the browser, pick the site, and approve the scopes.</li>
+<li>Optional: give your agent the open-source skill at
+<a href="https://github.com/%5Bowner%5D/precedent/blob/main/skills/precedent-decisions/SKILL.md"><code>skills/precedent-decisions/SKILL.md</code></a>. It explains when
+to call each tool and how to report conflicts.</li>
+</ol>
+<p>Third-party client access to Forge MCP servers is an Atlassian <strong>Early Access</strong> feature. It is
+experimental and may change.</p>
+<p>Example prompts:</p>
+<ul>
+<li>&quot;Before I open this PR that adds a GraphQL gateway, check our past decisions.&quot;</li>
+<li>&quot;Record the decisions from today&#39;s architecture sync&quot; (then paste the notes).</li>
+<li>&quot;Which decisions are due for a revisit?&quot;</li>
+</ul>
+</main><footer>© 2026 Lanternfield Studio · Precedent runs on Atlassian Forge.</footer></body></html>
