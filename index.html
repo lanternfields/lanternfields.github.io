@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lanternfield Studio</title>
+<link rel="icon" href="lanternfield-icon.svg" type="image/svg+xml">
+<style>
+  :root { --bg:#FBF3E4; --ink:#1B2648; --muted:#4A5578; --accent:#C9741C; --card:#ffffff; --line:#E8DCC4; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#151E3A; --ink:#FBF3E4; --muted:#C9CFE3; --accent:#F2A541; --card:#1E2A4C; --line:#2C3A63; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width:760px; margin:0 auto; padding:56px 16px 72px; }
+  header { display:flex; align-items:center; gap:18px; margin-bottom:28px; }
+  header img { width:72px; height:72px; border-radius:18px; }
+  h1 { font-size:2rem; margin:0; letter-spacing:-0.01em; }
+  .tag { color:var(--accent); font-weight:700; letter-spacing:0.18em; text-transform:uppercase; font-size:0.8rem; }
+  p.lead { color:var(--muted); font-size:1.1rem; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:18px 0; }
+  .card h2 { margin:0 0 6px; font-size:1.2rem; }
+  .card p { margin:0 0 10px; color:var(--muted); }
+  a { color:var(--accent); }
+  .links a { margin-right:16px; white-space:nowrap; }
+  footer { margin-top:40px; color:var(--muted); font-size:0.9rem; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <img src="lanternfield-icon.svg" alt="">
+    <div><div class="tag">Studio</div><h1>Lanternfield Studio</h1></div>
+  </header>
+  <p class="lead">We build small, careful software and digital goods: apps for the tools teams already use, and printable designs for everyday moments.</p>
+
+  <section class="card">
+    <h2>Precedent</h2>
+    <p>Decision memory for Jira and Confluence. Captures what your team decided and why, and flags new work that contradicts it.</p>
+    <div class="links">
+      <a href="precedent/">Overview</a>
+      <a href="precedent/support.html">Support</a>
+      <a href="precedent/privacy.html">Privacy</a>
+      <a href="precedent/terms.html">Terms</a>
+    </div>
+  </section>
+
+  <footer>Contact: <a href="mailto:lanternfieldstudio@gmail.com">lanternfieldstudio@gmail.com</a></footer>
+</main>
+</body>
+</html>
