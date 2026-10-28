@@ -12,7 +12,7 @@ pre{background:var(--code);padding:12px;border-radius:8px;overflow-x:auto}footer
 <header><div><a href="index.html"><img src="precedent-icon.svg" width="28" height="28" alt="">Precedent</a>
 <nav><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="support.html">Support</a><a href="mcp.html">MCP</a></nav></div></header>
 <main><h1>Precedent — Privacy Policy</h1>
-<p><em>Last updated: 2026-10-27</em></p>
+<p><em>Last updated: 2026-10-28</em></p>
 <p>Precedent (&quot;the app&quot;) is an Atlassian Forge app published by <strong>Lanternfield Studio</strong> (&quot;we&quot;). This policy
 explains what data the app processes and how.</p>
 <h2>Summary</h2>
@@ -57,32 +57,52 @@ and the app makes no calls outside Atlassian.</strong></li>
 <td>Cached on the decision record</td>
 </tr>
 <tr>
+<td>Cached AI conflict verdicts: a verdict and two short quotes (up to 200 characters each, one from the decision and one from the work item)</td>
+<td>Forge LLMs, when the AI conflict review runs</td>
+<td>Avoid re-asking the model about unchanged text</td>
+<td>Yes, for 14 days</td>
+</tr>
+<tr>
+<td>Content fingerprints (hashes) of processed pages, issues and comments, and the ids of decisions found in them</td>
+<td>The app</td>
+<td>Skip unchanged content, avoid duplicates</td>
+<td>Yes (no content)</td>
+</tr>
+<tr>
 <td>Settings and usage counters (daily AI token count)</td>
 <td>Admins and the app</td>
 <td>Configuration and budget</td>
 <td>Yes</td>
 </tr>
 </tbody></table>
-<p>The app does not collect email addresses, passwords, payment information, or analytics or tracking data.</p>
+<p>The app does not collect email addresses, passwords, payment information, or analytics or tracking data.
+Jira comments restricted to a role or group, and Jira Service Management internal notes, are never read.</p>
 <h2>AI processing</h2>
 <p>When an admin has enabled &quot;Use Atlassian-hosted AI&quot;, text from pages and issues is sent to <strong>Forge LLMs</strong>.
 These are Anthropic Claude models hosted by Atlassian inside the Atlassian platform. That text is used
-only to extract decisions. Requests pass through Atlassian&#39;s AI moderation and Acceptable Use Policy.
+only to extract decisions and to check new work against recorded decisions. Requests pass through Atlassian&#39;s AI moderation and Acceptable Use Policy.
 No data is sent to any third party, and the app does not train any model. Admins can disable AI at any
-time, and the rule-based extractor keeps working.</p>
+time, and the rule-based extractor and conflict rules keep working. A per-site daily token budget caps AI use.</p>
 <h2>Access control</h2>
 <p>Users see a decision only if they can open at least one of its source pages or issues. The app checks
-this as the viewing user and hides decisions when it cannot confirm access. Decisions recorded
-manually or through Rovo are visible to users who can use the app on the site.</p>
+this as the viewing user and hides decisions when it cannot confirm access. On a visible decision, any
+source or linked page or issue the user cannot open is removed from what they see. Decisions recorded
+manually or through Rovo are visible to users who can use the app on the site. If an admin turns on
+publishing to the Teamwork Graph, only decisions recorded manually or through Rovo are published
+(workspace-wide); decisions captured from pages and issues are never published.</p>
 <h2>Retention and deletion</h2>
 <ul>
 <li>Data is kept until it is deleted. Admins can delete every Precedent record from <strong>Precedent settings →
 Delete all data</strong>.</li>
 <li>Uninstalling the app removes its Forge storage according to Atlassian&#39;s Forge data-deletion policies.</li>
-<li>Personal data: the app stores Atlassian account IDs. Every week it reports them through Forge&#39;s
-personal data reporting API. When an account is closed, the app removes that account ID and its
-cached display name from every decision record (owner, participants, contributors, audit history)
-and shows &quot;Former user&quot; instead. Cached names of updated accounts are refreshed.</li>
+<li>Personal data: the app stores Atlassian account IDs and display names. Every week it reports the IDs
+through Forge&#39;s personal data reporting API (scope <code>report:personal-data</code>). When an account is
+closed, the app removes that account ID from every decision record (owner, participants, Teamwork
+Graph contributors, audit history). It also replaces the person&#39;s display names (from its name cache
+and from names stored on records) and account ID in every text field (title, statement, rationale,
+alternatives, history notes, source titles and evidence quotes) with &quot;Former user&quot;, then clears its
+name cache and all cached AI verdicts. Cached names of updated accounts are refreshed.</li>
+<li>Deleting all data also clears the app&#39;s name cache, content fingerprints and cached AI verdicts.</li>
 </ul>
 <h2>Sub-processors</h2>
 <p>Atlassian (Forge hosting, storage and Forge LLMs). No others.</p>
