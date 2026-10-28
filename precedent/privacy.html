@@ -54,13 +54,19 @@ and the app makes no calls outside Atlassian.</strong></li>
 <td>Teamwork Graph context (contributors, teams, goals)</td>
 <td>Teamwork Graph API, queried as the viewing user</td>
 <td>Show who and what a decision relates to</td>
-<td>Cached on the decision record</td>
+<td>No. Computed for each viewer when they open a decision</td>
 </tr>
 <tr>
-<td>Cached AI conflict verdicts: a verdict and two short quotes (up to 200 characters each, one from the decision and one from the work item)</td>
+<td>Cached AI conflict verdicts: per work item and decision, a verdict and two verified quotes (up to 200 characters each, one from the decision and one from the work item). No model-written text is stored</td>
 <td>Forge LLMs, when the AI conflict review runs</td>
 <td>Avoid re-asking the model about unchanged text</td>
 <td>Yes, for 14 days</td>
+</tr>
+<tr>
+<td>Account IDs of closed accounts the app has erased</td>
+<td>Forge personal data reporting</td>
+<td>Keep erased people out of later re-captures</td>
+<td>Yes (IDs only)</td>
 </tr>
 <tr>
 <td>Content fingerprints (hashes) of processed pages, issues and comments, and the ids of decisions found in them</td>
@@ -102,7 +108,8 @@ Graph contributors, audit history). It also replaces the person&#39;s display na
 and from names stored on records) and account ID in every text field (title, statement, rationale,
 alternatives, history notes, source titles and evidence quotes) with &quot;Former user&quot;, then clears its
 name cache and all cached AI verdicts. Cached names of updated accounts are refreshed.</li>
-<li>Deleting all data also clears the app&#39;s name cache, content fingerprints and cached AI verdicts.</li>
+<li>Deleting all data also clears the app&#39;s name cache, content fingerprints, cached AI verdicts and the list of erased account IDs.</li>
+<li>When an account&#39;s profile changes, names stored on records are dropped and looked up again, so the current name shows.</li>
 </ul>
 <h2>Sub-processors</h2>
 <p>Atlassian (Forge hosting, storage and Forge LLMs). No others.</p>
