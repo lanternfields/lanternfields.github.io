@@ -1,0 +1,107 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Privacy Policy · Notifiable</title><link rel="icon" href="notifiable-icon.svg"><style>
+:root{--bg:#fff;--fg:#172b4d;--muted:#44546f;--line:#091e4224;--accent:#1d4ed8;--code:#f7f8f9}
+@media (prefers-color-scheme:dark){:root{--bg:#1d2125;--fg:#b6c2cf;--muted:#9fadbc;--line:#a6c5e229;--accent:#85b8ff;--code:#22272b}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Ubuntu,sans-serif}
+header{border-bottom:1px solid var(--line)}header div,main{max-width:820px;margin:0 auto;padding:16px}
+header a.brand{color:var(--fg);text-decoration:none;font-weight:700;display:flex;align-items:center;gap:10px}
+nav{display:flex;gap:16px;flex-wrap:wrap;font-size:14px;margin-top:6px}nav a{color:var(--muted)}a{color:var(--accent)}
+h1{font-size:30px;line-height:1.2}h2{margin-top:32px;font-size:20px}table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}
+td,th{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}code{background:var(--code);padding:1px 4px;border-radius:4px}
+pre{background:var(--code);padding:12px;border-radius:8px;overflow-x:auto}footer{max-width:820px;margin:40px auto;padding:16px;color:var(--muted);font-size:13px}</style></head><body>
+<header><div><a class="brand" href="index.html"><img src="notifiable-icon.svg" width="28" height="28" alt="">Notifiable</a>
+<nav><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="support.html">Support</a><a href="mcp.html">MCP</a><a href="compliance.html">Compliance notes</a></nav></div></header>
+<main><h1>Notifiable: Privacy Policy</h1>
+<p><em>Last updated: 2026-10-27</em></p>
+<p>Notifiable (&quot;the app&quot;) is an Atlassian Forge app published by <strong>Lanternfield Studio</strong> (&quot;we&quot;). This policy
+explains what data the app processes and how.</p>
+<h2>Summary</h2>
+<ul>
+<li>Notifiable runs entirely on Atlassian&#39;s Forge platform (&quot;Runs on Atlassian&quot;). <strong>We operate no servers, and
+the app makes no calls outside Atlassian.</strong></li>
+<li>Data stays in your site&#39;s Forge app storage, in your site&#39;s data residency location.</li>
+<li>We, the publisher, <strong>cannot access your data</strong>.</li>
+</ul>
+<h2>What the app processes</h2>
+<table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Source</th>
+<th>Purpose</th>
+<th>Stored?</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Incident summary, description, comments (except comments restricted to a role or group, which are never read), labels, components, priority, status, Affected services / Root cause / Incident manager fields</td>
+<td>Jira Service Management REST APIs, when incidents change or a user assesses one</td>
+<td>Classify the incident and pre-fill reports</td>
+<td>Extracted facts with short evidence quotes (≤ 260 characters each), plus a bounded copy of the incident text (description ≤ 8,000 characters, last 30 comments ≤ 2,000 characters each) so that the evidence can be reviewed</td>
+</tr>
+<tr>
+<td>Regulatory case data: facts, assessment, classification, report drafts, filing records, authority reference codes</td>
+<td>Users, the extractor, Rovo actions</td>
+<td>Regulatory reporting workflow</td>
+<td>Yes, in Forge app storage</td>
+</tr>
+<tr>
+<td>Entity profile: legal name, LEI, contacts (names, work emails, phone numbers)</td>
+<td>Jira administrators</td>
+<td>Section 1 of reports</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Atlassian account IDs and display names (assignee, incident manager, people who classify, edit or file)</td>
+<td>Jira and the acting user</td>
+<td>Attribution and the audit trail</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Teamwork Graph context (linked work items, deployments, pull requests, teams and members)</td>
+<td>Teamwork Graph API, queried as the viewing user</td>
+<td>Evidence and contact suggestions</td>
+<td><strong>Not stored</strong>: fetched for, and shown to, the viewing user only</td>
+</tr>
+<tr>
+<td>Audit trail entries</td>
+<td>The app</td>
+<td>Tamper-evident record keeping</td>
+<td>Yes (hash-chained)</td>
+</tr>
+<tr>
+<td>Settings and usage counters (daily AI tokens)</td>
+<td>Admins and the app</td>
+<td>Configuration and budget</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<p>The app writes two things to Jira:</p>
+<ul>
+<li><strong>internal notes</strong> (deadline reminders), which customers cannot see;</li>
+<li>an <strong>issue property</strong> <code>notifiable</code> (state, regimes, next deadline), which is used for JQL search.</li>
+</ul>
+<h2>AI processing</h2>
+<p>When an admin enables &quot;Use Atlassian-hosted AI&quot;, incident text is sent to <strong>Forge LLMs</strong>: Anthropic Claude
+models hosted by Atlassian inside the Atlassian platform. The text is used only to extract impact facts and
+draft report narratives. AI output is only kept if its quote appears in the incident and actually states the value. AI facts are shown as suggestions that a person must accept before they affect any assessment. Requests pass
+through Atlassian&#39;s AI moderation and Acceptable Use Policy. No data is sent to third parties, and no model
+is trained on your data. Admins can disable AI at any time, and the rule-based extractor keeps working.</p>
+<h2>Access control</h2>
+<p>Users see a case only when they can open its Jira incident. The app checks this as the viewing user and
+fails closed. Changing a case requires the same access. Settings, imports, backfill and data deletion
+require Jira administrator permission.</p>
+<h2>Retention and deletion</h2>
+<ul>
+<li>Data is kept until deleted. Admins can delete all Notifiable data under <strong>Notifiable settings → Data →
+Delete all Notifiable data</strong>.</li>
+<li>Uninstalling removes Forge storage according to Atlassian&#39;s Forge data-deletion policies.</li>
+<li>Personal data: every week the app reports the account IDs it stores through Forge&#39;s personal data
+reporting API. Closed accounts are erased from case documents and shown as &quot;Former user&quot;. Audit-trail
+entries are hash-chained for integrity. Rather than rewrite them, the app redacts closed accounts when
+it displays them.</li>
+</ul>
+<h2>Sub-processors</h2>
+<p>Atlassian (Forge hosting, storage and Forge LLMs). There are no others.</p>
+<h2>Contact</h2>
+<p><strong>Lanternfield Studio</strong> · <strong><a href="mailto:lanternfieldstudio@gmail.com">lanternfieldstudio@gmail.com</a></strong> · <a href="https://lanternfields.github.io/notifiable/support.html">Support</a></p>
+</main><footer>© 2026 Lanternfield Studio · Notifiable runs on Atlassian Forge. Decision support, not legal advice.</footer></body></html>

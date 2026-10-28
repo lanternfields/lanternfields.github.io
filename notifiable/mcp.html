@@ -1,0 +1,85 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MCP guide · Notifiable</title><link rel="icon" href="notifiable-icon.svg"><style>
+:root{--bg:#fff;--fg:#172b4d;--muted:#44546f;--line:#091e4224;--accent:#1d4ed8;--code:#f7f8f9}
+@media (prefers-color-scheme:dark){:root{--bg:#1d2125;--fg:#b6c2cf;--muted:#9fadbc;--line:#a6c5e229;--accent:#85b8ff;--code:#22272b}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Ubuntu,sans-serif}
+header{border-bottom:1px solid var(--line)}header div,main{max-width:820px;margin:0 auto;padding:16px}
+header a.brand{color:var(--fg);text-decoration:none;font-weight:700;display:flex;align-items:center;gap:10px}
+nav{display:flex;gap:16px;flex-wrap:wrap;font-size:14px;margin-top:6px}nav a{color:var(--muted)}a{color:var(--accent)}
+h1{font-size:30px;line-height:1.2}h2{margin-top:32px;font-size:20px}table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}
+td,th{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}code{background:var(--code);padding:1px 4px;border-radius:4px}
+pre{background:var(--code);padding:12px;border-radius:8px;overflow-x:auto}footer{max-width:820px;margin:40px auto;padding:16px;color:var(--muted);font-size:13px}</style></head><body>
+<header><div><a class="brand" href="index.html"><img src="notifiable-icon.svg" width="28" height="28" alt="">Notifiable</a>
+<nav><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="support.html">Support</a><a href="mcp.html">MCP</a><a href="compliance.html">Compliance notes</a></nav></div></header>
+<main><h1>Using Notifiable from external AI assistants (MCP)</h1>
+<p>Notifiable declares a <code>rovo:mcp</code> module named <strong>Notifiable reporting</strong> that exposes seven tools. They are
+the same actions the Reporting Officer agent uses.</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Verb</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>assess-incident</code></td>
+<td>GET</td>
+<td>DORA classification of an incident, per criterion with evidence, plus applicable regimes and live deadlines</td>
+</tr>
+<tr>
+<td><code>reporting-deadlines</code></td>
+<td>GET</td>
+<td>Upcoming and overdue DORA, GDPR and NIS2 deadlines, plus incidents awaiting classification</td>
+</tr>
+<tr>
+<td><code>draft-incident-report</code></td>
+<td>CREATE</td>
+<td>Saves a new draft of the next report, field by field. Never submits</td>
+</tr>
+<tr>
+<td><code>record-classification</code></td>
+<td>UPDATE</td>
+<td>Records the human major / not-major decision. Confirm with the user first</td>
+</tr>
+<tr>
+<td><code>record-submission</code></td>
+<td>UPDATE</td>
+<td>Records a filing and the authority reference. Confirm with the user first</td>
+</tr>
+<tr>
+<td><code>find-recurring-incidents</code></td>
+<td>GET</td>
+<td>The RTS 2024/1772 Art. 8(2) recurring-incident check</td>
+</tr>
+<tr>
+<td><code>explain-reporting-rule</code></td>
+<td>GET</td>
+<td>Plain-language rule with its citation</td>
+</tr>
+</tbody></table>
+<p>Every call runs with the <strong>invoking user&#39;s</strong> permissions. Results only include incidents that user can
+open.</p>
+<h2>In Rovo Studio</h2>
+<p>Go to <strong>Create agent → Tools → Add tools → Connected apps → Notifiable</strong> and pick the tools you want. The
+bundled <strong>Reporting Officer</strong> agent already uses all of them through the <code>notifiable-incident-reporting</code>
+skill.</p>
+<h2>In Claude Code, Claude Desktop, Cursor or VS Code (Early Access)</h2>
+<ol>
+<li>An org admin enables the tools under <strong>admin.atlassian.com → Apps → Sites → (site) → Connected apps →
+Notifiable → Tools</strong>.</li>
+<li>Add the server. Notifiable&#39;s server URL is:<pre><code class="language-bash">claude mcp add --transport http notifiable https://mcp.atlassian.com/forge/f62df724-c85c-4739-808d-2a9cdc5b0559
+</code></pre>
+For other clients, add an HTTP MCP server with the same URL.</li>
+<li>Authenticate with OAuth in the browser, pick the site and approve the scopes.</li>
+<li>Optional: give your agent <a href="skill.html">the Notifiable skill</a> as a skill or system prompt.</li>
+</ol>
+<p>Example prompts:</p>
+<ul>
+<li>&quot;Which regulatory deadlines are due today?&quot;</li>
+<li>&quot;Is LPOPS-101 major under DORA, and why?&quot;</li>
+<li>&quot;Draft the initial notification for LPOPS-101.&quot;</li>
+</ul>
+<p>External MCP clients are an <strong>Early Access</strong> feature of Forge <code>rovo:mcp</code>. Tool availability depends on
+the admin&#39;s Connected-apps settings.</p>
+</main><footer>© 2026 Lanternfield Studio · Notifiable runs on Atlassian Forge. Decision support, not legal advice.</footer></body></html>

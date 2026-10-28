@@ -1,0 +1,83 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Support · Notifiable</title><link rel="icon" href="notifiable-icon.svg"><style>
+:root{--bg:#fff;--fg:#172b4d;--muted:#44546f;--line:#091e4224;--accent:#1d4ed8;--code:#f7f8f9}
+@media (prefers-color-scheme:dark){:root{--bg:#1d2125;--fg:#b6c2cf;--muted:#9fadbc;--line:#a6c5e229;--accent:#85b8ff;--code:#22272b}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Ubuntu,sans-serif}
+header{border-bottom:1px solid var(--line)}header div,main{max-width:820px;margin:0 auto;padding:16px}
+header a.brand{color:var(--fg);text-decoration:none;font-weight:700;display:flex;align-items:center;gap:10px}
+nav{display:flex;gap:16px;flex-wrap:wrap;font-size:14px;margin-top:6px}nav a{color:var(--muted)}a{color:var(--accent)}
+h1{font-size:30px;line-height:1.2}h2{margin-top:32px;font-size:20px}table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}
+td,th{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}code{background:var(--code);padding:1px 4px;border-radius:4px}
+pre{background:var(--code);padding:12px;border-radius:8px;overflow-x:auto}footer{max-width:820px;margin:40px auto;padding:16px;color:var(--muted);font-size:13px}</style></head><body>
+<header><div><a class="brand" href="index.html"><img src="notifiable-icon.svg" width="28" height="28" alt="">Notifiable</a>
+<nav><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="support.html">Support</a><a href="mcp.html">MCP</a><a href="compliance.html">Compliance notes</a></nav></div></header>
+<main><h1>Notifiable: Support</h1>
+<p><strong>Contact:</strong> <a href="mailto:lanternfieldstudio@gmail.com">lanternfieldstudio@gmail.com</a> · response within 2 business days (Partner supported, best effort during the
+Codegeist period).</p>
+<h2>The 3-minute path (judges and first-time users)</h2>
+<p>You need a site with Jira Service Management and Rovo.</p>
+<ol>
+<li><p>Install Notifiable.</p>
+</li>
+<li><p>Open <strong>Apps → Manage apps → Notifiable → Configure</strong> → <strong>Data</strong> → <strong>Load sample data</strong>. This loads a
+fictional payment institution&#39;s profile, its critical-services register and seven sample cases.</p>
+</li>
+<li><p>Still on <strong>Data</strong>, choose <strong>Create demo incident</strong>. Notifiable creates a real Incident in your service
+project and assesses it straight away. Or create an Incident yourself and paste this description:</p>
+<pre><code>The card acquiring gateway is failing: roughly 18% of card authorisations are declined.
+About 9,800 merchants affected so far. Merchants in NL, BE and DE are affected.
+Approx. 41,000 card transactions declined so far; value of the affected transactions is about €1.3M.
+A tech news site has published an article about the outage, and complaints are trending.
+No evidence of unauthorised access.
+</code></pre>
+</li>
+<li><p>Open the incident. Within about 30 seconds (straight away with the button), the sidebar shows
+<strong>Notifiable · Clock · <code>DORA 23h …</code></strong>. Expand the panel: &quot;Meets major criteria&quot;, with the evidence
+for each criterion.</p>
+</li>
+<li><p>Choose <strong>Review &amp; classify</strong> → <strong>Classify as major</strong>. The ring drops to 4 hours. Then <strong>Reports →
+Draft</strong> fills the official template.</p>
+</li>
+<li><p>Open <strong>Apps → Notifiable</strong> for the console, and <strong>Ask Reporting Officer</strong> to try the Rovo agent.</p>
+</li>
+</ol>
+<h2>Getting started</h2>
+<ol>
+<li>Install Notifiable on your Jira site with Jira Service Management. Teamwork Graph features need an org
+admin to approve the graph scopes.</li>
+<li>Open <strong>Apps → Manage apps → Notifiable → Configure</strong> (Notifiable settings):<ul>
+<li><strong>Entity profile</strong>: legal name, LEI, type of financial entity, member state, timezone, NIS2
+designation, contacts.</li>
+<li><strong>Critical services</strong>: each service, whether it supports a critical or important function, whether
+it is authorised, and its baselines (clients, daily transactions, daily value, member states).</li>
+<li><strong>Regimes &amp; calendar</strong>: DORA, GDPR and NIS2, plus the bank-holiday preset.</li>
+<li><strong>Monitoring</strong>: service projects and incident work types. Optionally, <em>Assess existing incidents</em>.</li>
+</ul>
+</li>
+<li>Open any incident: the <strong>Notifiable</strong> panel (Clock) shows the assessment and the deadline. Open
+<strong>Apps → Notifiable</strong> for the console.</li>
+</ol>
+<p>Don&#39;t have incidents yet? Use <strong>Settings → Data → Load sample data</strong> to explore with a fictional payment
+institution.</p>
+<h2>FAQ</h2>
+<p><strong>When does the clock start?</strong> At detection (awareness; field 2.2). Put a line such as
+<code>Detected: 2026-10-27 09:12 CET</code> in the incident description, or edit <em>Detected (awareness)</em> on the case.
+Without one, the time the incident was created is used.</p>
+<p><strong>Does Notifiable file reports with my regulator?</strong> No. It drafts and exports the reports (JSON, CSV and
+portal text) and records what you filed, with the authority&#39;s reference code.</p>
+<p><strong>Why is my incident &quot;potentially major&quot;?</strong> Some criteria are still unknown and could tip the result.
+The Assessment tab lists them. Click <strong>Add fact</strong> to record what you know.</p>
+<p><strong>Why didn&#39;t the weekend extension apply?</strong> It does not apply to initial and intermediate reports of
+credit institutions, CCPs, trading venues or NIS2-designated entities, or when your authority disapplied
+it (RTS 2025/301 Art. 5(5)–(6)). Check your entity profile.</p>
+<p><strong>Can I turn AI off?</strong> Yes, under Settings → AI &amp; integrations. Extraction and drafting fall back to
+deterministic rules and templates.</p>
+<p><strong>How do I build a JSM queue of reportable incidents?</strong> Use JQL such as
+<code>notifiableMajor = yes AND notifiableNextDue &lt;= endOfDay()</code>.</p>
+<p><strong>Is the audit trail tamper-proof?</strong> It is tamper-<em>evident</em>: each entry&#39;s SHA-256 hash includes the
+previous one, and <strong>Verify chain</strong> detects edits, deletions and reordering.</p>
+<h2>Known limitations</h2>
+<p>See <a href="compliance.html">Compliance notes</a>.</p>
+<h2>Security</h2>
+<p>Please report vulnerabilities to <a href="mailto:lanternfieldstudio@gmail.com">lanternfieldstudio@gmail.com</a>. Notifiable has no external endpoints or servers.</p>
+</main><footer>© 2026 Lanternfield Studio · Notifiable runs on Atlassian Forge. Decision support, not legal advice.</footer></body></html>
